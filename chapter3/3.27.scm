@@ -26,7 +26,7 @@
 
 ;Q: Explain why memo-fib computes the nth Fibonacci number in a number of steps proportional to n:
 
-;Answer: memo-fib works in O(N) time, due to the simple fact that by the time (memo-fib (- n 1)) finishes the value of (memo-fib (- n 2)) is known and stored and thus isn't evaluated. Since this is true at any moment within the iteration cycle, only one round of iteration is needed to compute values ranging from 0 to n. The rest is just lookup.
+;Answer: memo-fib works in O(N) time, due to the simple fact that by the time (memo-fib (- n 1)) finishes the value of (memo-fib (- n 2)) is known and stored and thus isn't evaluated. Since this is #t at any moment within the iteration cycle, only one round of iteration is needed to compute values ranging from 0 to n. The rest is just lookup.
 
 ;Q: Would the scheme still work if we had simply defined memo-fib to be (memoize fib)?
 

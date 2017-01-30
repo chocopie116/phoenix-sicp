@@ -8,6 +8,6 @@
     (+ 1 (count (car x)) (count (cdr x))))
 
 (define (elem-in-set? elem set)
-    (cond ((null? set) false)
+    (cond ((null? set) #f)
           ((eq? elem (car set)) true)
           (else (elem-in-set? elem (cdr set)))))

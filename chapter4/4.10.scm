@@ -5,7 +5,7 @@
 (define (lambda? exp)
     (if (pair? exp)
         (tagged-list? (car exp) 'lambda)
-        false))
+        #f))
 
 (define (lambda-parameters exp) (cadr (car exp)))
 (define (lambda-body exp) (cdr exp))

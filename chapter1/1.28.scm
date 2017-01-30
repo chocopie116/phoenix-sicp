@@ -11,6 +11,6 @@
     (define (miller-rabin-prime? a)
         (= (expmod a (- n 1) n) 1))
     (define (miller-rabin-iter a)
-        (cond ((< a n) (if (miller-rabin-prime? a) (miller-rabin-iter (+ a 1)) false))
+        (cond ((< a n) (if (miller-rabin-prime? a) (miller-rabin-iter (+ a 1)) #f))
               (else true)))
     (miller-rabin-iter 1))

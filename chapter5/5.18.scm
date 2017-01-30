@@ -1,6 +1,6 @@
 (define (make-register name)
   (let ((contents '*unassigned*)
-        (tracing false))
+        (tracing #f))
     (define (dispatch message)
       (define (set-contents! value)
         (let ((old-value contents))
@@ -18,7 +18,7 @@
             ((eq? message 'tracing-on)
              (lambda () (set! tracing true)))
             ((eq? message 'tracing-off)
-             (lambda () (set! tracing false)))
+             (lambda () (set! tracing #f)))
             (else
              (error "Unknown request -- REGISTER" message))))
     dispatch))
@@ -36,7 +36,7 @@
         (the-instruction-sequence '())
         (labels '())
         (inst-count 0)
-        (tracing false))
+        (tracing #f))
     (let ((the-ops
            (list (list 'initialize-stack
                        (lambda () (stack 'initialize)))
@@ -108,11 +108,11 @@
               ((eq? message 'inst-count-print-reset) 
                (lambda () (display inst-count) (set! inst-count 0)))
               ((eq? message 'set-tracing-status!) 
-               (lambda (status) (if status (set! tracing true) (set! tracing false))))
+               (lambda (status) (if status (set! tracing true) (set! tracing #f))))
               ((eq? message 'register-tracing-on)
                 (lambda (reg-name) (set-register-tracing! reg-name true)))
               ((eq? message 'register-tracing-off)
-                (lambda (reg-name) (set-register-tracing! regname false)))
+                (lambda (reg-name) (set-register-tracing! regname #f)))
               (else (error "Unknown request -- MACHINE" message))))
       dispatch)))
 

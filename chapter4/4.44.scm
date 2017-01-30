@@ -3,12 +3,12 @@
 
 (define (horizontal-safe? q queens)
     (cond ((null? queens) true)
-          ((= (row-pos q) (row-pos (car queens))) false)
+          ((= (row-pos q) (row-pos (car queens))) #f)
           (else (horizontal-safe? q (cdr queens)))))
 
 (define (vertical-safe? q queens)
     (cond ((null? queens) true)
-          ((= (col-pos q) (col-pos (car queens))) false)
+          ((= (col-pos q) (col-pos (car queens))) #f)
           (else (vertical-safe? q (cdr queens)))))
 
 (define (diagonal-safe? q queens)
@@ -16,7 +16,7 @@
             true)
           ((= (abs (- (row-pos q) (row-pos (car queens))))
               (abs (- (col-pos q) (col-pos (car queens))))) 
-            false)
+            #f)
           (else
             (diagonal-safe? q (cdr queens)))))
 

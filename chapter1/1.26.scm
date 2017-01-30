@@ -7,7 +7,7 @@
     (define (fermat-prime? a)
         (= (expmod a n n) a))
     (define (fermat-iter a)
-        (cond ((< a n) (if (fermat-prime? a) (fermat-iter (+ a 1)) false))
+        (cond ((< a n) (if (fermat-prime? a) (fermat-iter (+ a 1)) #f))
               (else true)))
     (fermat-iter 1))
 

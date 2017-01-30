@@ -4,7 +4,7 @@
         (stack (make-stack))
         (the-instruction-sequence '())
         (inst-count 0)
-        (tracing false))
+        (tracing #f))
     (let ((the-ops
            (list (list 'initialize-stack
                        (lambda () (stack 'initialize)))
@@ -50,7 +50,7 @@
               ((eq? message 'inst-count-print-reset) 
                (lambda () (display inst-count) (set! inst-count 0)))
               ((eq? message 'set-tracing-status!) 
-               (lambda (status) (if status (set! tracing true) (set! tracing false))))
+               (lambda (status) (if status (set! tracing true) (set! tracing #f))))
               (else (error "Unknown request -- MACHINE" message))))
       dispatch)))
 

@@ -1,11 +1,11 @@
 (define (distinct? elems)
     (define (in? elem elems)
-        (cond ((null? elems) false)
+        (cond ((null? elems) #f)
               ((eq? elem (car elems)) true)
               (else (in? elem (cdr elems)))))
     (define (distinct-loop elems)
         (cond ((null? elems) true)
-              ((in? (car elems) (cdr elems)) false)
+              ((in? (car elems) (cdr elems)) #f)
               (else (distinct-loop (cdr elems)))))
     (distinct-loop elems))
 

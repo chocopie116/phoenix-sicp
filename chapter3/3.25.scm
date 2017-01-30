@@ -1,7 +1,7 @@
 (define (make-table same-key?)
   (let ((local-table (list '*table*)))
     (define (assoc key records)
-      (cond ((null? records) false)
+      (cond ((null? records) #f)
             ((same-key? key (caar records)) (car records))
             (else (assoc key (cdr records)))))
     (define (lookup keys)
@@ -15,7 +15,7 @@
                         (if (not (pair? (cdr subtable)))
                             false
                             (iter (cdr keys) subtable)))
-                    false)))
+                    #f)))
         (iter keys local-table))
     (define (insert! keys value)
         (define (iter keys val table)

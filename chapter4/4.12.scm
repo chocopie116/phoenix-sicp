@@ -32,7 +32,7 @@
 ;For book's frame implementation:
 (define (in-frame? var frame)
     (define (in? variables)
-        (cond ((null? variables) false)
+        (cond ((null? variables) #f)
               ((eq? var (car variables)) true)
               (else (in? (cdr variables)))))
     (in? (frame-variables frame)))

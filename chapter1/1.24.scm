@@ -11,7 +11,7 @@
 (define (fast-prime n times)
     (cond ((= times 0) true)
           ((fermat-test n) (fast-prime n (- times 1)))
-          (else false)))
+          (else #f)))
 
 (define (prime? n)
     (fast-prime n 100))

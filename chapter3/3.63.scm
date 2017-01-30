@@ -48,7 +48,7 @@
 
 ;Now for the illumination. Let's get back to what happened when we first executed (stream-cdr guesses).
 ;We went into X. What we've been doing so far, in case you've forgotten, since after starting executing X is computing [OUR_CDR](cdr of guesses).
-;So now that we have our answer, we set "result" in X with (cons-stream 1.5 Y) and "already-run?" to true and return "result".
+;So now that we have our answer, we set "result" in X with (cons-stream 1.5 Y) and "already-run?" to #t and return "result".
 
 ;To put everything together let's consider (stream-cdr (stream-cdr guesses)).
 ;This is the same as (stream-cdr (cons-stream 1.5 Y)) or (stream-cdr (cons-stream 1.5 (stream-map improve-proc X)))
