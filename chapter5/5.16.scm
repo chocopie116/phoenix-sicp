@@ -50,7 +50,7 @@
               ((eq? message 'inst-count-print-reset) 
                (lambda () (display inst-count) (set! inst-count 0)))
               ((eq? message 'set-tracing-status!) 
-               (lambda (status) (if status (set! tracing true) (set! tracing #f))))
+               (lambda (status) (if status (set! tracing #t) (set! tracing #f))))
               (else (error "Unknown request -- MACHINE" message))))
       dispatch)))
 
@@ -92,7 +92,7 @@
 
 ;Value: done
 
-;1 ]=> (set-tracing! exp-machine true)
+;1 ]=> (set-tracing! exp-machine #t)
 
 ;1 ]=> (start exp-machine)
 ;(assign continue (label exp-end))
