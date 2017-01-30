@@ -35,6 +35,6 @@ eval-cond-actions
     (save continue)
     (goto (label ev-sequence))
 false-cond
-    (assign val (const false))
+    (assign val (const #f))
     (goto (reg continue))
 

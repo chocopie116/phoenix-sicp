@@ -34,7 +34,7 @@
      (if (= val max)
          true
          (begin (set! val (+ val 1))
-                false)))))
+                #f)))))
 
 (define (test-and-dec! val)
     (without-interrupts

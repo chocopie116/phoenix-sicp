@@ -29,7 +29,7 @@
 (define (rest-and-operands ops) (cdr ops))
 (define (eval-and ops env)
     (cond ((no-and-operands? ops) true)
-          ((false? (eval (first-and-operand ops) env)) false)
+          ((false? (eval (first-and-operand ops) env)) #f)
           (else (eval-and (rest-and-operands ops) env))))
 
 ;or
@@ -40,7 +40,7 @@
 (define (first-or-operand ops) (car ops))
 (define (rest-or-operands ops) (cdr ops))
 (define (eval-or ops env)
-    (cond ((no-or-operands? ops) false)
+    (cond ((no-or-operands? ops) #f)
           ((true? (eval (first-or-operand ops) env)) true)
           (else (eval-or (rest-or-operands ops) env))))
 
@@ -76,7 +76,7 @@
         true
         (make-if (first-and-operand ops)
                  (expand-and-clauses (rest-and-operands ops))
-                 false)))
+                 #f)))
 
 (define (or->if exp)
     (expand-or-operands (or-operands exp)))

@@ -5,7 +5,7 @@
 (define (tagged-list? exp tag)
   (if (pair? exp)
       (eq? (car exp) tag)
-      false))
+      #f))
 
 (define (query-driver-loop)
   (prompt-for-input input-prompt)
@@ -199,11 +199,11 @@
                (let ((b (binding-in-frame e frame)))
                  (if b
                      (tree-walk (binding-value b))
-                     false))))
+                     #f))))
           ((pair? e)
            (or (tree-walk (car e))
                (tree-walk (cdr e))))
-          (else false)))
+          (else #f)))
   (tree-walk exp))
 
 (define THE-ASSERTIONS the-empty-stream)

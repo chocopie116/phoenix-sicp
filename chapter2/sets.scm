@@ -17,9 +17,9 @@
 
 ; as ordered lists
 (define (element-of-set? x set)
-  (cond ((null? set) false)
+  (cond ((null? set) #f)
         ((= x (car set)) true)
-        ((< x (car set)) false)
+        ((< x (car set)) #f)
         (else (element-of-set? x (cdr set)))))
 
 (define (intersection-set set1 set2)
@@ -43,7 +43,7 @@
   (list entry left right))
 
 (define (element-of-set? x set)
-    (cond ((null? set) false)
+    (cond ((null? set) #f)
           ((= x (entry set)) true)
           ((< x (entry set)) (element-of-set? x (left-branch set)))
           ((> x (entry set)) (element-of-set? x (right-branch set)))))

@@ -52,6 +52,6 @@
 (define (prime? n)
   (define (iter ps)
     (cond ((> (square (stream-car ps)) n) true)
-          ((divisible? n (stream-car ps)) false)
+          ((divisible? n (stream-car ps)) #f)
           (else (iter (stream-cdr ps)))))
   (iter primes))
