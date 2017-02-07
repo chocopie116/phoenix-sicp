@@ -33,7 +33,7 @@
 (define (in-frame? var frame)
     (define (in? variables)
         (cond ((null? variables) #f)
-              ((eq? var (car variables)) true)
+              ((eq? var (car variables)) #t)
               (else (in? (cdr variables)))))
     (in? (frame-variables frame)))
 
